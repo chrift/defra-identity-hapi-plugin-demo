@@ -6,6 +6,8 @@ const inert = require('@hapi/inert')
 const vision = require('@hapi/vision')
 const ejs = require('ejs')
 const catboxMongo = require('catbox-mongodb')
+const defraIdentityHapiPlugin = require('@envage/defra-identity-hapi-plugin')
+// const defraIdentityHapiPlugin = require('../defra-identity-hapi-plugin')
 
 const config = require('./config')
 
@@ -119,7 +121,7 @@ async function start () {
   } = config
 
   await server.register({
-    plugin: require('../'),
+    plugin: defraIdentityHapiPlugin,
     options: {
       aad,
       dynamics,
