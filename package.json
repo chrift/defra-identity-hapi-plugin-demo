@@ -1,6 +1,6 @@
 {
   "name": "defra.identity-hapi-plugin-demo",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "A demo application for DEFRA's hapi auth plugin",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   ],
   "engines": {
     "node": "~12.16.0",
-    "npm": "~6.12.1"
+    "npm": "~6.13.4"
   },
   "keywords": [],
   "author": "Chris Cheshire",
