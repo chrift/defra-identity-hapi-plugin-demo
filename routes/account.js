@@ -7,7 +7,7 @@ module.exports = [
     method: 'GET',
     path: '/account/{journey}',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async function (request, h) {
       const { journey } = request.params
@@ -86,7 +86,7 @@ module.exports = [
     method: 'GET',
     path: '/account-private',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async function (request, h) {
       const { idm } = request.server.methods

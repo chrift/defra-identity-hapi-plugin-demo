@@ -10,7 +10,6 @@ module.exports = {
     port: env.PORT || 8000,
     domain: env.DOMAIN || `http://${env.HOST}:${env.PORT}`
   },
-
   identity: {
     identityAppUrl: env.IDENTITY_APP_URL,
     serviceId: env.IDENTITY_SERVICEID,
@@ -31,18 +30,19 @@ module.exports = {
       endpointBase: env.DYNAMICS_ENDPOINTBASE
     }
   },
-
   serviceRoleId: env.IDENTITY_SERVICEROLEID,
   isSecure: env.IS_SECURE === 'true',
-
   cache: {
     ttlMs: 24 * 60 * 60 * 1000,
     segment: 'defra-identity-hapi-plugin-demo'
   },
-
   mongoCache: {
     enabled: env.USE_MONGODB === 'true',
     host: '127.0.0.1',
     connectionString: env.MONGO_CONNECTIONSTRING || undefined
+  },
+  basicAuth: {
+    username: env.BASIC_USERNAME,
+    password: env.BASIC_PASSWORD
   }
 }

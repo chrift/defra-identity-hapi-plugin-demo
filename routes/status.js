@@ -11,7 +11,7 @@ module.exports = [
     method: 'GET',
     path: '/status/{journey}',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async (request, h) => {
       const { idm } = request.server.methods
@@ -48,7 +48,7 @@ module.exports = [
     method: 'POST',
     path: '/status/{journey}',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async function (request, h) {
       const { journey } = request.params
