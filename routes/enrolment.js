@@ -17,7 +17,7 @@ const readEnrolmentRequests = require('../lib/readEnrolmentRequests')
 /**
  * filter the available services to only those for which there is an enrolment request
  * @param {ServiceLookup} availableServices
- * @param {Array<EnrolmentRequest} enrolmentRequests
+ * @param {Array<EnrolmentRequest>} enrolmentRequests
  */
 const filterServiceLookup = (availableServices, enrolmentRequests) => {
   const allowedServices = enrolmentRequests.map(r => r.serviceId)
@@ -35,7 +35,7 @@ module.exports = [
     method: 'GET',
     path: '/enrolment/{journey}',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async function (request, h) {
       const { journey } = request.params
@@ -103,7 +103,7 @@ module.exports = [
     method: 'POST',
     path: '/enrolment/{journey}',
     options: {
-      auth: 'idm'
+      auth: 'basic-and-idm'
     },
     handler: async function (request, h) {
       const { idm } = request.server.methods
