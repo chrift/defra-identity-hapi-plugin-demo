@@ -9,49 +9,50 @@ const catboxMongo = require('catbox-mongodb')
 const defraIdentityHapiPlugin = require('@envage/defra-identity-hapi-plugin')
 // const defraIdentityHapiPlugin = require('../defra-identity-hapi-plugin')
 
+const registerServerAuth = require('./registerServerAuth')
 const config = require('./config')
-
-const serverCache = config.mongoCache.enabled ? [
-  {
-    name: 'mongoCache',
-    provider: {
-      constructor: catboxMongo,
-      options: {
-        partition: 'idm-cache',
-        host: config.mongoCache.connectionString ? undefined : config.mongoCache.host,
-        uri: config.mongoCache.connectionString
-      }
-    }
-  }
-] : undefined
-
-const security = {
-  xframe: 'deny',
-  noSniff: true,
-  hsts: {
-    maxAge: 10454400,
-    includeSubDomains: true,
-    preload: true
-  }
-}
-
-// Create a server with a host and port
-const server = Hapi.server({
-  host: config.app.host,
-  port: config.app.port,
-  cache: serverCache,
-  routes: {
-    security: config.isSecure === true ? security : false,
-    validate: {
-      options: {
-        abortEarly: false
-      }
-    }
-  }
-})
 
 // Start the server
 async function start () {
+  const serverCache = config.mongoCache.enabled ? [
+    {
+      name: 'mongoCache',
+      provider: {
+        constructor: catboxMongo,
+        options: {
+          partition: 'idm-cache',
+          host: config.mongoCache.connectionString ? undefined : config.mongoCache.host,
+          uri: config.mongoCache.connectionString
+        }
+      }
+    }
+  ] : undefined
+
+  const security = {
+    xframe: 'deny',
+    noSniff: true,
+    hsts: {
+      maxAge: 10454400,
+      includeSubDomains: true,
+      preload: true
+    }
+  }
+
+  // Create a server with a host and port
+  const server = Hapi.server({
+    host: config.app.host,
+    port: config.app.port,
+    cache: serverCache,
+    routes: {
+      security: config.isSecure === true ? security : false,
+      validate: {
+        options: {
+          abortEarly: false
+        }
+      }
+    }
+  })
+
   if (process.env.NODE_ENV === 'development') {
     await server.register({
       plugin: Blipp,
@@ -187,15 +188,14 @@ async function start () {
     {
       method: 'GET',
       path: staticFilePath,
-      options: {
-        auth: false
-      },
       handler: {
         directory: {
           path: path.join(__dirname, 'public')
         }
       }
     })
+
+  await registerServerAuth(server)
 
   // All other routes
   server.route([

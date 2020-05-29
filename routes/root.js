@@ -5,9 +5,6 @@ module.exports = [
   {
     method: 'GET',
     path: '/',
-    options: {
-      auth: false
-    },
     handler: async function (request, h) {
       const { idm } = request.server.methods
 
@@ -24,9 +21,6 @@ module.exports = [
   {
     method: 'GET',
     path: '/auth/outbound',
-    config: {
-      auth: false
-    },
     handler: async (request, h) => {
       const { query, server } = request
 
@@ -52,9 +46,6 @@ module.exports = [
   {
     method: 'GET',
     path: '/version',
-    config: {
-      auth: false
-    },
     handler: (request, h) => {
       return h.response(version).type('text/plain')
     }

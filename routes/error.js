@@ -2,9 +2,6 @@ module.exports = [
   {
     method: 'GET',
     path: '/error',
-    options: {
-      auth: false
-    },
     handler: function (request, h) {
       const { query, server } = request
 
