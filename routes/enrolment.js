@@ -1,6 +1,4 @@
 const serviceLookup = require('../lib/services')
-const readAccounts = require('../lib/readAccounts')
-const readEnrolmentRequests = require('../lib/readEnrolmentRequests')
 
 /**
  * GUID
@@ -62,14 +60,14 @@ module.exports = [
       const { contactId } = claims || request.params
 
       // Get all unspent EnrolmentRequests
-      const enrolmentRequests = await readEnrolmentRequests(serviceId, contactId, true, request.server)
+      const enrolmentRequests = await idm.dynamics.readEnrolmentRequests(serviceId, contactId, true, request.server)
 
       // read the accounts associated with the connections
       const accountIds = enrolmentRequests.map(conn => conn.accountId)
       let accountNames = []
       const noConnectionDetails = { connectionDetailsId: null }
       if (accountIds && accountIds.length) {
-        const accounts = await readAccounts(accountIds, request.server)
+        const accounts = await idm.dynamics.readAccounts(accountIds, request.server)
         accountNames = accounts.map((thisAccount) => {
           return {
             accountId: thisAccount.accountId,
@@ -117,7 +115,7 @@ module.exports = [
         const { contactId } = claims
 
         // Get all unspent EnrolmentRequests
-        const enrolmentRequests = await readEnrolmentRequests(serviceId, contactId, true, request.server)
+        const enrolmentRequests = await idm.dynamics.readEnrolmentRequests(serviceId, contactId, true, request.server)
 
         if (!enrolmentRequests || !enrolmentRequests.length) {
           throw new Error(`No unspent enrolment requests - contactId ${contactId}`)

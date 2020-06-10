@@ -1,6 +1,5 @@
 const serviceLookup = require('../lib/services')
 const connectionRoleIds = require('../lib/connectionRoleIds')
-const readAccounts = require('../lib/readAccounts')
 
 module.exports = [
   {
@@ -37,7 +36,7 @@ module.exports = [
       })
       // read the accounts associated with the connections
       const accountIds = rawConnections.map(conn => conn.accountId)
-      const accounts = await readAccounts(accountIds, request.server)
+      const accounts = await idm.dynamics.readAccounts(accountIds, request.server)
       const accountNameFromId = accounts.reduce((acc, a) => ({ ...acc, [a.accountId]: a.accountName }), {})
       Object.assign(accountNameFromId, { null: 'Citizen' }) // Add a key for "null" which returns "Citizen"
       const services = []
