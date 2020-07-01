@@ -21,7 +21,7 @@ module.exports = [
       // read the connections for the current contact
       const rawConnections = await idm.dynamics.readContactsAccountLinks(contactId)
       // read the enrolments for the current contact within this service
-      const currentEnrolments = await idm.dynamics.readEnrolment(contactId, null, null, null, serviceId, true)
+      const [currentEnrolments] = await idm.dynamics.readEnrolment(contactId, null, null, null, serviceId, true)
       const rawEnrolments = currentEnrolments.value || []
       // convert the enrolments into the data structure required by the data rows in the view
       const enrolments = rawEnrolments.map((thisEnrolment) => {
