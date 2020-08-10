@@ -1,6 +1,9 @@
 # Change log
 
 All notable changes to this project will be documented in this file.
+## 1.1.2 - 17 Jul 2020
+- CIDM-927 - Add tickbox for whether scp should be stubbed out 
+
 ## 1.1.1 - 10 Jun 2020
 - CIDM-981 - Prevent the demo app accessing dynamics directly.  All calls should be through the plugin
 
