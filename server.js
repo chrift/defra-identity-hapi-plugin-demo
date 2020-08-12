@@ -194,7 +194,7 @@ async function start () {
       }
     }
 
-    return h.continue()
+    return h.continue
   })
 
   // Static assets
