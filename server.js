@@ -6,6 +6,7 @@ const inert = require('@hapi/inert')
 const vision = require('@hapi/vision')
 const ejs = require('ejs')
 const catboxMongo = require('catbox-mongodb')
+const debug = require('debug')('defra.identity:demo:server')
 const defraIdentityHapiPlugin = require('@envage/defra-identity-hapi-plugin')
 // const defraIdentityHapiPlugin = require('../defra-identity-hapi-plugin')
 
@@ -179,6 +180,21 @@ async function start () {
     }
 
     return h.continue
+  })
+
+  server.ext('onPreResponse', (request, h) => {
+    const response = request.response
+
+    if (response.isBoom || response instanceof Error) {
+      debug(response)
+
+      return {
+        ...response,
+        message: response.message
+      }
+    }
+
+    return h.continue()
   })
 
   // Static assets
