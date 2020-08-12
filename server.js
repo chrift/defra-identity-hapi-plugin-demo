@@ -188,10 +188,10 @@ async function start () {
     if (response.isBoom || response instanceof Error) {
       debug(response)
 
-      return {
-        ...response,
-        message: response.message
-      }
+      // return {
+      //   ...response,
+      //   message: response.message
+      // }
     }
 
     return h.continue
