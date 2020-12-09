@@ -15,8 +15,5 @@
     "md5": "^2.3.0",
     "oidc-provider": "^6.29.8",
     "testdouble": "^3.16.1"
-  },
-  "devDependencies": {
-    "@hapi/eslint-plugin": "^5.0.0"
   }
 }
