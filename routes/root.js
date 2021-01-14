@@ -26,13 +26,14 @@ module.exports = [
 
       try {
         // We might have had a state or nonce manually passed through in our url
-        const { state, nonce, scope, serviceId, stubScp } = query
+        const { state, nonce, scope, serviceId, stubScp, prompt } = query
 
         let outboundUrl = await server.methods.idm.generateOutboundRedirectUrl(request, request.query, {
           state,
           nonce,
           scope,
-          serviceId
+          serviceId,
+          prompt
         })
 
         if (stubScp === 'true') {
