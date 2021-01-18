@@ -1,6 +1,9 @@
 # Change log
-
 All notable changes to this project will be documented in this file.
+
+## 1.1.4 - 18 Jan - 2021
+- Removed references to VMD
+
 ## 1.1.3 - 12 Aug - 2020
 - Add extra debug statements for errors
 
