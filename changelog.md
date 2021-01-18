@@ -1,6 +1,9 @@
 # Change log
-
 All notable changes to this project will be documented in this file.
+
+## 1.2.1 - 18 Jan - 2021
+- Removed references to VMD
+
 ## 1.2.0 - 8 Dec 2020
 - CIDM-1896 - Move scp stub module into switch demo service
 
