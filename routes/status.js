@@ -22,7 +22,7 @@ module.exports = [
       const { contactId } = claims
       const { journey } = request.params
 
-      const [currentEnrolments] = await idm.dynamics.readEnrolment(contactId, null, null, null, null, true)
+      const currentEnrolments = await idm.dynamics.readEnrolment(contactId, null, null, null, null, true)
       // convert the enrolments into the data structure required by the data rows in the view
       const filteredEnrolments = currentEnrolments.value
         .map(thisEnrolment => new EnrolmentStatus(thisEnrolment))
