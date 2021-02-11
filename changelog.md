@@ -1,6 +1,9 @@
 # Change log
 All notable changes to this project will be documented in this file.
 
+## 1.2.2 - 9 Feb 2021
+- Add Plant Export (Apply for a Phytosanitary Certificate) to the dropdown
+
 ## 1.2.1 - 18 Jan - 2021
 - Removed references to VMD
 
