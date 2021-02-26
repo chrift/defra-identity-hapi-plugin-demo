@@ -1,10 +1,13 @@
 # Change log
 All notable changes to this project will be documented in this file.
 
-## 1.2.2 - 18 Jan - 2021
+## 1.2.3 - 26 Feb 2021
+- CIDM-2206 - Add app insights
+
+## 1.2.2 - 18 Jan 2021
 - CIDM-2032 - Removed references to VMD
 
-## 1.2.1 - 14 Jan - 2021
+## 1.2.1 - 14 Jan 2021
 - CIDM-1982 - SCP suppression checkbox
 
 ## 1.2.0 - 8 Dec 2020
