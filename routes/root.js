@@ -26,7 +26,7 @@ module.exports = [
 
       try {
         // We might have had a state or nonce manually passed through in our url
-        const { state, nonce, scope, serviceId, stubScp, prompt } = query
+        const { state, nonce, scope, serviceId, stubScp, prompt, _ga, backToPath } = query
 
         let outboundUrl = await server.methods.idm.generateOutboundRedirectUrl(request, request.query, {
           state,
@@ -39,6 +39,8 @@ module.exports = [
         if (stubScp === 'true') {
           outboundUrl += '&stubScp=true'
         }
+
+        outboundUrl += `&_ga=${_ga}-${backToPath.split('/')[2]}` // make a service based demo _ga value
 
         return h.redirect(outboundUrl)
       } catch (e) {
