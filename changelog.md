@@ -1,6 +1,8 @@
 # Change log
 All notable changes to this project will be documented in this file.
 
+## 1.2.3 - 4 Mar 2021
+- Added _ga to outboundUrl
 ## 1.2.2 - 9 Feb 2021
 - Add Plant Export (Apply for a Phytosanitary Certificate) to the dropdown
 
