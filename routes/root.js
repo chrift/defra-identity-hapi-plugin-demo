@@ -26,7 +26,8 @@ module.exports = [
 
       try {
         // We might have had a state or nonce manually passed through in our url
-        const { state, nonce, scope, serviceId, stubScp, prompt } = query
+        const { state, nonce, scope, serviceId, stubScp, prompt, _ga, backToPath } = query
+        request.query._ga = `&_ga=${_ga}-${backToPath.split('/')[2]}-${new Date().getTime()}` // make a service based demo _ga value
 
         let outboundUrl = await server.methods.idm.generateOutboundRedirectUrl(request, request.query, {
           state,
